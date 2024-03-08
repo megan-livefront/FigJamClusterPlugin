@@ -1,0 +1,17 @@
+<h2>Cluster Creator</h2>
+<p>String to cluster by: <input id="clusterString" type="string" value=""></p>
+<button id="create">Cluster</button>
+<button id="cancel">Cancel</button>
+<script>
+
+  document.getElementById('create').onclick = () => {
+    const textbox = document.getElementById('clusterString');
+    const clusterString = textbox.value;
+    parent.postMessage({ pluginMessage: { type: 'create-cluster', clusterString } }, '*')
+  }
+
+  document.getElementById('cancel').onclick = () => {
+    parent.postMessage({ pluginMessage: { type: 'cancel' } }, '*')
+  }
+
+</script>
