@@ -1,7 +1,10 @@
 <h2>Cluster Creator</h2>
-<p>String to cluster by: <input id="clusterString" type="string" value=""></p>
-<button id="create">Cluster</button>
-<button id="cancel">Cancel</button>
+<form>
+  <p>String to cluster by: <input id="clusterString" type="string" value=""></p>
+  <button id="create" type="submit">Cluster</button>
+  <button id="cancel" type="button">Cancel</button>
+</form>
+
 <script>
 
   document.getElementById('create').onclick = () => {
