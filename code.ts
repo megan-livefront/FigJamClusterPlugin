@@ -6,11 +6,11 @@ figma.ui.onmessage = (msg: { type: string; clusterString: string }) => {
     const nodesToCluster: (ShapeWithTextNode | StickyNode)[] = [];
 
     figma.currentPage.selection.forEach((node) => {
-      if (
-        (node.type === "STICKY" || node.type === "SHAPE_WITH_TEXT") &&
-        node.text.characters.includes(msg.clusterString)
-      ) {
-        nodesToCluster.push(node);
+      if (node.type === "STICKY" || node.type === "SHAPE_WITH_TEXT") {
+        const nodeText = node.text.characters.toLowerCase();
+        const clusterString = msg.clusterString.toLowerCase();
+
+        if (nodeText.includes(clusterString)) nodesToCluster.push(node);
       }
     });
 
