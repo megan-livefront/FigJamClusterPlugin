@@ -13,32 +13,7 @@ figma.showUI(__html__);
 // callback. The callback will be passed the "pluginMessage" property of the
 // posted message.
 figma.ui.onmessage = (msg: { type: string; clusterString: string }) => {
-  // One way of distinguishing between different types of messages sent from
-  // your HTML page is to use an object with a "type" property like this.
   if (msg.type === "create-cluster") {
-    //   const shape = figma.createShapeWithText();
-    //   // You can set shapeType to one of: 'SQUARE' | 'ELLIPSE' | 'ROUNDED_RECTANGLE' | 'DIAMOND' | 'TRIANGLE_UP' | 'TRIANGLE_DOWN' | 'PARALLELOGRAM_RIGHT' | 'PARALLELOGRAM_LEFT'
-    //   shape.shapeType = "ROUNDED_RECTANGLE";
-    //   shape.x = i * (shape.width + 200);
-    //   shape.fills = [{ type: "SOLID", color: { r: 1, g: 0.5, b: 0 } }];
-    //   figma.currentPage.appendChild(shape);
-    //   nodes.push(shape);
-
-    //   const connector = figma.createConnector();
-    //   connector.strokeWeight = 8;
-
-    //   connector.connectorStart = {
-    //     endpointNodeId: nodes[i].id,
-    //     magnet: "AUTO",
-    //   };
-
-    //   connector.connectorEnd = {
-    //     endpointNodeId: nodes[i + 1].id,
-    //     magnet: "AUTO",
-    //   };
-
-    // const nodes: SceneNode[] = [];
-
     const notesToCluster: ShapeWithTextNode[] = [];
 
     figma.currentPage.selection.forEach((note) => {
@@ -51,10 +26,9 @@ figma.ui.onmessage = (msg: { type: string; clusterString: string }) => {
       }
     });
 
+    console.log("NOTES TO CLUSTER", notesToCluster);
     figma.currentPage.selection = notesToCluster;
   }
 
-  // Make sure to close the plugin when you're done. Otherwise the plugin will
-  // keep running, which shows the cancel button at the bottom of the screen.
   figma.closePlugin();
 };
