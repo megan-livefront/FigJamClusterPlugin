@@ -1,7 +1,7 @@
 {
-  "name": "FigJamUI",
+  "name": "cluster-creator",
   "version": "1.0.0",
-  "description": "Your Figma Plugin",
+  "description": "Create clusters of notes based on common text",
   "main": "code.js",
   "scripts": {
     "build": "tsc -p tsconfig.json",

@@ -1,18 +1,14 @@
 {
-  "name": "FigJamUI",
+  "name": "Cluster Creator",
   "id": "1347750641142028369",
   "api": "1.0.0",
   "main": "code.js",
   "capabilities": [],
   "enableProposedApi": false,
-  "editorType": [
-    "figjam"
-  ],
+  "editorType": ["figjam"],
   "ui": "ui.html",
   "networkAccess": {
-    "allowedDomains": [
-      "none"
-    ]
+    "allowedDomains": ["none"]
   },
   "documentAccess": "dynamic-page"
 }
