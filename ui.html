@@ -1,11 +1,14 @@
 <h2>Cluster Creator</h2>
 <form>
-  <p>String to cluster by: <input id="clusterString" type="string" value=""></p>
+  <p>String to cluster by: <input id="clusterString" type="string" value="" autofocus></p>
   <button id="create" type="submit">Cluster</button>
   <button id="cancel" type="button">Cancel</button>
 </form>
 
 <script>
+  window.onload = function () {
+    var input = document.getElementById("clusterString").focus();
+  }
 
   document.getElementById('create').onclick = () => {
     const textbox = document.getElementById('clusterString');
