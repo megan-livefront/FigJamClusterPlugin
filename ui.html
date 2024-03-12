@@ -1,9 +1,19 @@
-<h2>Cluster Creator</h2>
-<form>
-  <p>String to cluster by: <input id="clusterString" type="string" value="" autofocus></p>
-  <button id="create" type="submit">Cluster</button>
-  <button id="cancel" type="button">Cancel</button>
-</form>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+  href="https://fonts.googleapis.com/css2?family=Asap+Condensed:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+  rel="stylesheet">
+<div class="wrapper">
+  <h2 class="heading">Cluster Creator</h2>
+  <form>
+    <label for="clusterString">String to cluster by:</label>
+    <input id="clusterString" type="string" value="" autofocus>
+    <div class="buttonWrapper">
+      <button id="create" type="submit">cluster</button>
+      <button id="cancel" type="button">cancel</button>
+    </div>
+  </form>
+</div>
 
 <script>
   window.onload = function () {
@@ -21,3 +31,52 @@
   }
 
 </script>
+
+<style>
+  .wrapper {
+    font-family: "Asap Condensed", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .heading {
+    font-weight: 600;
+    font-style: normal;
+    text-align: center;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+  }
+
+  input {
+    padding: 8px;
+    border-radius: 8px;
+    width: 80%;
+  }
+
+  .buttonWrapper {
+    display: flex;
+    gap: 8px;
+  }
+
+  button {
+    font-family: "Asap Condensed", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    padding: 12px;
+    border-radius: 24px;
+    color: #ffffff;
+    background-color: #002677;
+    border: none;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #0342C9;
+  }
+</style>
