@@ -30,6 +30,8 @@ figma.ui.onmessage = (msg: { type: string; clusterString: string }) => {
       });
 
       figma.currentPage.selection = [section];
+      section.x = currentViewPort.x + 150;
+      section.y = currentViewPort.y + 150;
     }
   }
 
