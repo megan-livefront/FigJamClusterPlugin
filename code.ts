@@ -16,13 +16,20 @@ figma.ui.onmessage = (msg: { type: string; clusterString: string }) => {
 
     const currentViewPort = figma.currentPage.selection[0].absoluteBoundingBox;
     if (currentViewPort) {
+      const section = figma.createSection();
+      section.name = msg.clusterString;
+      const sectionWidth = nodesToCluster[0].width * 3 + 175;
+      const sectionHeight =
+        nodesToCluster[0].height * Math.ceil(nodesToCluster.length / 3) + 175;
+      section.resizeWithoutConstraints(sectionWidth, sectionHeight);
+
       nodesToCluster.forEach((node, index) => {
-        const positiveIndex = index + 1;
-        node.x = getNodeX(currentViewPort.x, node, positiveIndex);
-        node.y = getNodeY(currentViewPort.y, node, positiveIndex);
+        node.x = getNodeX(section.x, node, index);
+        node.y = getNodeY(section.y, node, index);
+        section.appendChild(node);
       });
 
-      figma.currentPage.selection = nodesToCluster;
+      figma.currentPage.selection = [section];
     }
   }
 
@@ -35,14 +42,11 @@ function getNodeX(
   index: number
 ) {
   const nodeWidth = node.width + 25; // Add spacing between each node
-  if (index > 3) {
-    if (index % 3 === 0) {
-      return currentX - nodeWidth * 3;
-    } else {
-      return currentX - nodeWidth * (index % 3);
-    }
+  if (index > 2) {
+    const indexMod = index % 3;
+    return currentX + nodeWidth * indexMod;
   } else {
-    return currentX - nodeWidth * index;
+    return currentX + nodeWidth * index;
   }
 }
 
@@ -52,9 +56,10 @@ function getNodeY(
   index: number
 ) {
   const nodeHeight = node.height + 25; // Add spacing between each node
-  if (index > 3) {
-    return currentY + Math.ceil(index / 3) * nodeHeight;
+  if (index > 2) {
+    const indexNum = (index + 1) / 3;
+    return currentY + Math.ceil(indexNum - 1) * nodeHeight;
   } else {
-    return currentY + nodeHeight;
+    return currentY;
   }
 }
